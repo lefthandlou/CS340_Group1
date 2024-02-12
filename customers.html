@@ -58,11 +58,11 @@
   <tr>
     <th><a href="#" onClick="newCustomer()">New</a></th>
     <th></th>
-    <th>customer_id</th>
-    <th>first_name</th>
-    <th>last_name</th>
-    <th>email</th>
-    <th>address</th>
+    <th>Customer ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Address</th>
   </tr>
   <tr>
     <td><a href="#" onClick="updateCustomer('this.customer_id')">Edit</a></td>
@@ -98,13 +98,13 @@
     <form method="POST" id="addPlanet">
         <legend><strong>Add Customer</strong></legend>
           <fieldset class="fields">
-            <label> first name </label> <input type="text" name="fname">
-            <label> last name </label> <input type="text" name="lname">
-            <label> email </label> <select name="email">
-            <label> address </label> <input type="text" name="address">
+            <label> First Name </label> <input type="text" name="fname">
+            <label> Last Name </label> <input type="text" name="lname">
+            <label> Email </label> <input type="text" name="email">
+            <label> Address </label> <input type="text" name="address">
       </fieldset>
           <input class="btn" type="submit" id="addCustomer" value="Add Customer">
-          <input class="btn" type="button" value="cancel" onClick="browsePeople()">
+          <input class="btn" type="button" value="Cancel" onClick="browsePeople()">
 	</form> 
 </div><!-- insert -->
 <p>&nbsp;</p>
@@ -112,15 +112,14 @@
     <form method="POST" id="UpdateCustomer">
         <legend><strong>Update Customer</strong></legend>
           <fieldset class="fields">
-          <input type="hidden" name="customer_id" id="updatecustomer_id" value="1">
-          <label> ID: </label> 1
-            <label> first name </label> <input type="text" name="fname" value="John">
-            <label> last name </label> <input type="text" name="lname" value="Smith">
-            <label> email </label> <select name="email" value = "john.smith@example.com">
-            <label> address </label> <input type="text" name="address" value="123 Some Street">
+          <input type="hidden" name="customer_id" id="updatecustomer_id">
+            <label> First Name </label> <input type="text" name="fname">
+            <label> Last Name </label> <input type="text" name="lname">
+            <label> Email </label> <input type="text" name="email">
+            <label> Address </label> <input type="text" name="address">
       </fieldset>
           <input class="btn" type="submit" id="UpdateSaveCustomer" value="Save Update Customer">
-          <input class="btn" type="button" value="cancel" onClick="browseCustomer()">
+          <input class="btn" type="button" value="Cancel" onClick="browseCustomer()">
 	</form> 
 </div><!-- update -->
 <p>&nbsp;</p>
@@ -128,14 +127,14 @@
   <form method="POST" id="deleteCustomer">
       <legend><strong>Delete Customer</strong></legend>
           <fieldset class="fields">
-          <p>Are you sure you wish to delete the following?</p>
-          <input type="hidden" name="customer_id" id="deletecustomer_id" value="1">
-          <label><strong>ID:</strong></label> 1
-            <label> <strong>Name</strong> </label> John Smith
+          <p>Are you sure you wish to delete the following customer record?</p>
+          <input type="hidden" name="customer_id" id="deletecustomer_id">
+          <label><strong>ID:</strong></label> 
+          <label> <strong>Name</strong> </label> 
             
     </fieldset>
     <input class="btn" type="submit" id="DeleteCustomer" value="Delete Customer">
-          <input class="btn" type="button" value="cancel" onClick="browsePeople()">
+          <input class="btn" type="button" value="Cancel" onClick="browsePeople()">
   </form> 
 </div><!-- delete -->
 

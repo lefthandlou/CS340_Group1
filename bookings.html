@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>Bookings</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+			}
+      else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+		}
+    function newBooking() { showform('insert'); }
+    function updateBooking(bid) { showform('update'); }
+    function deleteBooking(bid) { showform ('delete'); }
+    function browseBookings() { showform ('browse'); }
+    function showAll() { showform ('all'); }
+</script>
+</head>
+
+<body onload="browseBookings()">
+<h1>Bookings</h1>
+
+[ <a href="customers.html">Customers</a> | <a href="rooms.html">Rooms</a> | <a href="room_types.html">Room Types</a>  | <a href="bookings">Bookins</a>  | <a href="room_bookings.html">Room Bookings</a> ]
+
+<div id="browse">
+<p><a href="#" onClick="showAll()">Display all forms</a> </p>
+<table border="1" cellpadding="5">
+  <tr>
+    <th><a href="#" onClick="newBooking()">New</a></th>
+    <th></th>
+    <th>booking_id</th>
+    <th>customer_id</th>
+    <th>total_paid</th>
+    <th>date_created</th>
+    <th>status</th>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateBooking('this.booking_id')">Edit</a></td>
+    <td><a href="#" onclick="deleteBooking('this.booking_id')">Delete</a></td>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right" >0</td>
+    <td>2024-02-07</td>
+    <td>arriving</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateBooking('this.booking_id')">Edit</a></td>
+    <td><a href="#" onclick="deleteBooking('this.booking_id')">Delete</a></td>
+    <td align="right" >2</td>
+    <td align="right" >2</td>
+    <td align="right" >0</td>
+    <td>2024-02-07</td>
+    <td>arriving</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateBooking('this.booking_id')">Edit</a></td>
+    <td><a href="#" onclick="deleteBooking('this.booking_id')">Delete</a></td>
+    <td align="right" >3</td>
+    <td align="right" >3</td>
+    <td align="right" >0</td>
+    <td>2024-02-07</td>
+    <td>arriving</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert">
+    <form method="POST" id="addBooking">
+        <legend><strong>Add Booking</strong></legend>
+          <fieldset class="fields">
+            <label> Customer ID </label> <input type="text" name="customer_id">
+            <label> Total Paid</label> <input type="text" name="total_paid">
+            <label> Date </label> <input type="date" name="date_created">
+            <label> Status</label> <select name="status"> 
+              <option value="0">&nbsp;</option>
+              <option value="1">arriving</option>
+              <option value="2">checkedin unpaid</option>
+              <option value="3">checkedin paid</option>
+              <option value="3">checked out</option>
+              </select>
+        </fieldset>
+          <input class="btn" type="submit" id="addBooking" value="Add Booking">
+          <input class="btn" type="button" value="Cancel" onClick="browseBookings()">
+	</form> 
+</div><!-- insert -->
+<p>&nbsp;</p>
+<div id="update">
+    <form method="POST" id="UpdateBooking">
+        <legend><strong>Update Booking</strong></legend>
+          <fieldset class="fields">
+          <input type="hidden" name="booking_id" id="updatebooking_id">
+            <label> Customer ID </label> <input type="text" name="customer_id">
+            <label> Total Paid </label> <input type="text" name="total_paid">
+            <label> Date </label> <input type="date" name="date_created">
+            <label> Status</label> <select name="status"> 
+              <option value="0">&nbsp;</option>
+              <option value="1">arriving</option>
+              <option value="2">checkedin unpaid</option>
+              <option value="3">checkedin paid</option>
+              <option value="3">checked out</option>
+              </select>  
+          </fieldset>
+          <input class="btn" type="submit" id="UpdateSaveBooking" value="Save Update Booking">
+          <input class="btn" type="button" value="Cancel" onClick="browseBookings()">
+	</form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form method="POST" id="deleteBooking">
+      <legend><strong>Delete Booking</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <input type="hidden" name="booking_id" id="deletebooking_id" value="1">
+          <label><strong>ID:</strong></label> 
+            <label> <strong>Customer</strong> </label>
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteBooking" value="Delete Booking">
+          <input class="btn" type="button" value="Cancel" onClick="browseBookings()">
+  </form> 
+</div><!-- delete -->
+
+</body>
+</html>
