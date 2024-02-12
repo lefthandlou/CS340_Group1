@@ -1,0 +1,189 @@
+<html>
+<head>
+<title>Rooms</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+			}
+      else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+		}
+
+    function browseRooms() { showform ('browse'); }
+</script>
+</head>
+
+<body onload="browseRooms()">
+<h1>Rooms</h1>
+
+[ <a href="customers.html">Customers</a> | <a href="rooms.html">Rooms</a> | <a href="room_types.html">Room Types</a>  | <a href="bookings">Bookins</a>  | <a href="room_bookings.html">Room Bookings</a> ]
+
+<div id="browse">
+<table border="1" cellpadding="5">
+  <tr>
+    <th>Room ID</th>
+    <th>Room Type ID</th>
+    <th>Room Number</th>
+  </tr>
+  <tr>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right" >101</td>
+  </tr>
+  <tr>
+    <td align="right" >1</td>
+    <td align="right" >2</td>
+    <td align="right" >102</td>
+  </tr>
+  <tr>
+    <td align="right" >1</td>
+    <td align="right" >3</td>
+    <td align="right" >103</td>
+  </tr>
+  <tr>
+    <td align="right" >1</td>
+    <td align="right" >4</td>
+    <td align="right" >104</td>
+  </tr>
+  <tr>
+    <td align="right" >1</td>
+    <td align="right" >5</td>
+    <td align="right" >105</td>
+  </tr>
+  <tr>
+    <td align="right" >1</td>
+    <td align="right" >6</td>
+    <td align="right" >106</td>
+  </tr>
+  <tr>
+    <td align="right" >1</td>
+    <td align="right" >7</td>
+    <td align="right" >107</td>
+  </tr>
+  <tr>
+    <td align="right" >1</td>
+    <td align="right" >8</td>
+    <td align="right" >108</td>
+  </tr>
+  <tr>
+    <td align="right" >1</td>
+    <td align="right" >9</td>
+    <td align="right" >109</td>
+  </tr>
+  <tr>
+    <td align="right" >1</td>
+    <td align="right" >10</td>
+    <td align="right" >110</td>
+  </tr>
+  <tr>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right" >11</td>
+  </tr>
+  <tr>
+    <td align="right" >1</td>
+    <td align="right" >12</td>
+    <td align="right" >112</td>
+  </tr>
+  <tr>
+    <td align="right" >1</td>
+    <td align="right" >13</td>
+    <td align="right" >113</td>
+  </tr>
+  <tr>
+    <td align="right" >2</td>
+    <td align="right" >14</td>
+    <td align="right" >201</td>
+  </tr>
+  <tr>
+    <td align="right" >2</td>
+    <td align="right" >15</td>
+    <td align="right" >202</td>
+  </tr>
+  <tr>
+    <td align="right" >2</td>
+    <td align="right" >16</td>
+    <td align="right" >203</td>
+  </tr>
+  <tr>
+    <td align="right" >2</td>
+    <td align="right" >17</td>
+    <td align="right" >204</td>
+  </tr>
+  <tr>
+    <td align="right" >2</td>
+    <td align="right" >18</td>
+    <td align="right" >205</td>
+  </tr>
+  <tr>
+    <td align="right" >2</td>
+    <td align="right" >19</td>
+    <td align="right" >206</td>
+  </tr>
+  <tr>
+    <td align="right" >2</td>
+    <td align="right" >20</td>
+    <td align="right" >207</td>
+  </tr>
+  <tr>
+    <td align="right" >2</td>
+    <td align="right" >21</td>
+    <td align="right" >208</td>
+  </tr>
+  <tr>
+    <td align="right" >2</td>
+    <td align="right" >22</td>
+    <td align="right" >209</td>
+  </tr>
+  <tr>
+    <td align="right" >2</td>
+    <td align="right" >23</td>
+    <td align="right" >210</td>
+  </tr>
+  <tr>
+    <td align="right" >2</td>
+    <td align="right" >24</td>
+    <td align="right" >211</td>
+  </tr>
+  <tr>
+    <td align="right" >2</td>
+    <td align="right" >25</td>
+    <td align="right" >212</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+
+</body>
+</html>
