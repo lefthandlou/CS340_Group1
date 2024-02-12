@@ -1,0 +1,214 @@
+<html>
+<head>
+<title>Room Bookings</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+			}
+      else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+		}
+    function newRoomBooking() { showform('insert'); }
+    function updateRoomBooking(pid) { showform('update'); }
+    function deleteRoomBooking(pid) { showform ('delete'); }
+    function browseRoomBookings() { showform ('browse'); }
+    function showAll() { showform ('all'); }
+</script> 
+</head>
+
+<body onload="browseRoomBookings()">
+<h1>Room Bookings</h1>
+
+[ <a href="index.html">Home</a> |<a href="customers.html">Customers</a> | <a href="rooms.html">Rooms</a> | <a href="room_types.html">Room Types</a>  |
+ <a href="bookings.html">Bookings</a>  | <a href="room_bookings.html">Room Bookings</a> ]
+
+<div id="browse">
+<p><a href="#" onClick="showAll()">Display all forms</a> </p>
+<table border="1" cellpadding="5">
+  <tr>
+    <th><a href="#" onClick="newRoomBooking()">New</a></th>
+    <th></th>
+    <th>Room Booking ID</th>
+    <th>Room Type ID</th>
+    <th>Booking ID</th>
+    <th>Room ID</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Nights</th>
+    <th>Booked Price</th>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateRoomBooking('this.room_booking_id')">Edit</a></td>
+    <td><a href="#" onclick="deleteRoomBooking('this.room_booking_id')">Delete</a></td>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td>Null</td>
+    <td>2024-02-07</td>
+    <td>2024-02-09</td>
+    <td>2</td>
+    <td>55</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateRoomBooking('this.room_booking_id')">Edit</a></td>
+    <td><a href="#" onclick="deleteRoomBooking('this.room_booking_id')">Delete</a></td>
+    <td align="right" >2</td>
+    <td align="right" >2</td>
+    <td align="right" >2</td>
+    <td>Null</td>
+    <td>2024-02-07</td>
+    <td>2024-02-09</td>
+    <td>2</td>
+    <td>65</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateRoomBooking('this.room_booking_id')">Edit</a></td>
+    <td><a href="#" onclick="deleteRoomBooking('this.room_booking_id')">Delete</a></td>
+    <td align="right" >3</td>
+    <td align="right" >1</td>
+    <td align="right" >3</td>
+    <td>Null</td>
+    <td>2024-02-07</td>
+    <td>2024-02-09</td>
+    <td>2</td>
+    <td>55</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert">
+    <form method="POST" id="addPlanet">
+        <legend><strong>Add Room Booking</strong></legend>
+          <fieldset class="fields">
+            <label> Booking ID </label> <input type="text" name="booking_id">
+            <label> Room Type ID </label> <input type="text" name="room_type_id">
+            <label> Room Number </label> <select name = "room_type_id">
+              <option>101</option>
+              <option>102</option>
+              <option>103</option>
+              <option>104</option>
+              <option>105</option>
+              <option>106</option>
+              <option>107</option>
+              <option>108</option>
+              <option>109</option>
+              <option>110</option>
+              <option>111</option>
+              <option>112</option>
+              <option>113</option>
+              <option>201</option>
+              <option>202</option>
+              <option>203</option>
+              <option>204</option>
+              <option>205</option>
+              <option>206</option>
+              <option>207</option>
+              <option>208</option>
+              <option>209</option>
+              <option>210</option>
+              <option>211</option>
+              <option>212</option>
+              <option>213</option>
+          </select>
+            <label> Start Date </label> <input type="date" name="start_date">
+            <label> End Date </label> <input type="date" name="end_date">
+            <label> Nights </label> <input type="number" name="nights">
+            <label> Price </label> <input type="text" name="price">
+      </fieldset>
+          <input class="btn" type="submit" id="addRoomBooking" value="Add Room  Booking">
+          <input class="btn" type="button" value="Cancel" onClick="browseRoomBookings()">
+	</form> 
+</div><!-- insert -->
+<p>&nbsp;</p>
+<div id="update">
+    <form method="POST" id="UpdateRoomBooking">
+        <legend><strong>Update Room Booking</strong></legend>
+          <fieldset class="fields">
+          <input type="hidden" name="room_booking_id" id="update_room_booking_id    ">
+            <label> Booking ID </label> <input type="text" name="fname">
+            <label> Room Type ID</label> <input type="text" name="lname">
+            <label> Room Number </label> <select name = "room_type_id">
+              <option>101</option>
+              <option>102</option>
+              <option>103</option>
+              <option>104</option>
+              <option>105</option>
+              <option>106</option>
+              <option>107</option>
+              <option>108</option>
+              <option>109</option>
+              <option>110</option>
+              <option>111</option>
+              <option>112</option>
+              <option>113</option>
+              <option>201</option>
+              <option>202</option>
+              <option>203</option>
+              <option>204</option>
+              <option>205</option>
+              <option>206</option>
+              <option>207</option>
+              <option>208</option>
+              <option>209</option>
+              <option>210</option>
+              <option>211</option>
+              <option>212</option>
+              <option>213</option>
+          </select>
+          <label> Start Date </label> <input type="date" name="start_date">
+          <label> End Date </label> <input type="date" name="end_date">
+          <label> Nights </label> <input type="number" name="nights">
+          <label> Price </label> <input type="text" name="price">
+      </fieldset>
+          <input class="btn" type="submit" id="UpdateRoomBooking" value="Save Update Room Booking">
+          <input class="btn" type="button" value="Cancel" onClick="browseRoomBookings()">
+	</form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form method="POST" id="deleteRoomBooking">
+      <legend><strong>Delete Customer</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following room booking record?</p>
+          <input type="hidden" name="room_booking_id id="delete_room_booking_id">
+          <label><strong>Room Booking ID:</strong></label> 
+            
+    </fieldset>
+    <input class="btn" type="submit" id="deleteRoomBooking" value="Delete Room Booking">
+          <input class="btn" type="button" value="Cancel" onClick="browseRoomBookings()">
+  </form> 
+</div><!-- delete -->
+
+</body>
+</html>

@@ -26,7 +26,7 @@
 				document.getElementById('update').style.display = 'none';
 				document.getElementById('delete').style.display = 'block';
 			}
-      else if (dowhat == 'all'){
+            else if (dowhat == 'all'){
 				document.getElementById('browse').style.display = 'block';
 				document.getElementById('insert').style.display = 'block';
 				document.getElementById('update').style.display = 'block';
@@ -50,8 +50,9 @@
 <body onload="browseBookings()">
 <h1>Bookings</h1>
 
-[ <a href="customers.html">Customers</a> | <a href="rooms.html">Rooms</a> | <a href="room_types.html">Room Types</a>  | <a href="bookings">Bookins</a>  | <a href="room_bookings.html">Room Bookings</a> ]
-
+[ <a href="index.html">Home</a> |<a href="customers.html">Customers</a> | <a href="rooms.html">Rooms</a> | <a href="room_types.html">Room Types</a>  |
+ <a href="bookings.html">Bookings</a>  | <a href="room_bookings.html">Room Bookings</a> ]
+ 
 <div id="browse">
 <p><a href="#" onClick="showAll()">Display all forms</a> </p>
 <table border="1" cellpadding="5">
@@ -139,10 +140,10 @@
   <form method="POST" id="deleteBooking">
       <legend><strong>Delete Booking</strong></legend>
           <fieldset class="fields">
-          <p>Are you sure you wish to delete the following?</p>
+          <p>Are you sure you wish to delete the following booking?</p>
           <input type="hidden" name="booking_id" id="deletebooking_id" value="1">
-          <label><strong>ID:</strong></label> 
-            <label> <strong>Customer</strong> </label>
+          <label><strong>Booking ID:</strong></label> 
+
             
     </fieldset>
     <input class="btn" type="submit" id="DeleteBooking" value="Delete Booking">

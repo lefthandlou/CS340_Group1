@@ -8,36 +8,7 @@
 			* four DIVS: browse, insert, update, delete
 			* this function sets one visible the others not
 			*/
-			if (dowhat == 'insert'){
-				document.getElementById('browse').style.display = 'none';
-				document.getElementById('insert').style.display = 'block';
-				document.getElementById('update').style.display = 'none';
-				document.getElementById('delete').style.display = 'none';
-			}
-			else if (dowhat == 'update'){
-				document.getElementById('browse').style.display = 'none';
-				document.getElementById('insert').style.display = 'none';
-				document.getElementById('update').style.display = 'block';
-				document.getElementById('delete').style.display = 'none';
-			}
-			else if (dowhat == 'delete'){
-				document.getElementById('browse').style.display = 'none';
-				document.getElementById('insert').style.display = 'none';
-				document.getElementById('update').style.display = 'none';
-				document.getElementById('delete').style.display = 'block';
-			}
-      else if (dowhat == 'all'){
-				document.getElementById('browse').style.display = 'block';
-				document.getElementById('insert').style.display = 'block';
-				document.getElementById('update').style.display = 'block';
-				document.getElementById('delete').style.display = 'block';
-			}
-			else { //by default display browse
-				document.getElementById('browse').style.display = 'block';
-				document.getElementById('insert').style.display = 'none';
-				document.getElementById('update').style.display = 'none';
-				document.getElementById('delete').style.display = 'none';
-			}
+            document.getElementById('browse').style.display = 'block';
 		}
 
     function browseRooms() { showform ('browse'); }
@@ -47,7 +18,8 @@
 <body onload="browseRooms()">
 <h1>Rooms</h1>
 
-[ <a href="customers.html">Customers</a> | <a href="rooms.html">Rooms</a> | <a href="room_types.html">Room Types</a>  | <a href="bookings">Bookins</a>  | <a href="room_bookings.html">Room Bookings</a> ]
+[ <a href="index.html">Home</a> |<a href="customers.html">Customers</a> | <a href="rooms.html">Rooms</a> | <a href="room_types.html">Room Types</a>  |
+ <a href="bookings.html">Bookings</a>  | <a href="room_bookings.html">Room Bookings</a> ]
 
 <div id="browse">
 <table border="1" cellpadding="5">
