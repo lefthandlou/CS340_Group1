@@ -6,62 +6,68 @@ used sample website code for BSG database as starting point for all html pages.-
 <title>Customers</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript">
-		function showform(dowhat) {
-			/*
-			* four DIVS: browse, insert, update, delete
-			* this function sets one visible the others not
-			*/
+  /*Determines which forms are shown; default is browseCustomers*/
+  function showform(dowhat) {
+      
+      /*If 'New' button is clicked, the insert form is shown, and all other forms are hidden*/
 			if (dowhat == 'insert'){
 				document.getElementById('browse').style.display = 'none';
 				document.getElementById('insert').style.display = 'block';
 				document.getElementById('update').style.display = 'none';
 				document.getElementById('delete').style.display = 'none';
 			}
+       /*If 'Edit' button is clicked, the update form is shown, and all other forms are hidden*/
 			else if (dowhat == 'update'){
 				document.getElementById('browse').style.display = 'none';
 				document.getElementById('insert').style.display = 'none';
 				document.getElementById('update').style.display = 'block';
 				document.getElementById('delete').style.display = 'none';
 			}
+       /*If 'Delete' button is clicked, the delete form is shown, and all other forms are hidden*/
 			else if (dowhat == 'delete'){
 				document.getElementById('browse').style.display = 'none';
 				document.getElementById('insert').style.display = 'none';
 				document.getElementById('update').style.display = 'none';
 				document.getElementById('delete').style.display = 'block';
 			}
-      else if (dowhat == 'all'){
+      /*If 'display all forms' is clicked, all forms are shown*/
+            else if (dowhat == 'all'){
 				document.getElementById('browse').style.display = 'block';
 				document.getElementById('insert').style.display = 'block';
 				document.getElementById('update').style.display = 'block';
 				document.getElementById('delete').style.display = 'block';
 			}
-			else { //by default display browse
+      /*By default, only the data table is displayed*/
+			else {
 				document.getElementById('browse').style.display = 'block';
 				document.getElementById('insert').style.display = 'none';
 				document.getElementById('update').style.display = 'none';
 				document.getElementById('delete').style.display = 'none';
 			}
 		}
+    // Defines the specific functions for each CRUD operation
     function newCustomer() { showform('insert'); }
     function updateCustomer(pid) { showform('update'); }
     function deleteCustomer(pid) { showform ('delete'); }
-    function browseCustomer() { showform ('browse'); }
+    function browseCustomers() { showform ('browse'); }
     function showAll() { showform ('all'); }
 </script> 
 </head>
 
-<body onload="browseCustomer()">
+<body onload="browseCustomers()">
 <h1>Customers</h1>
 
+<!--Navigation bar with links to every page-->
 [ <a href="index.html">Home</a> |<a href="customers.html">Customers</a> | <a href="rooms.html">Rooms</a> | <a href="room_types.html">Room Types</a>  |
  <a href="bookings.html">Bookings</a>  | <a href="room_bookings.html">Room Bookings</a> ]
 
 <div id="browse">
-<p><a href="#" onClick="showAll()">Display all forms</a> </p>
+  <!--Displays all data currently in table-->
+<p><a href="#" onClick="showAll()">Display all forms</a> </p> <!--Event handler for 'Display all forms' button-->
 <table border="1" cellpadding="5">
   <tr>
-    <th><a href="#" onClick="newCustomer()">New</a></th>
-    <th></th>
+    <th><a href="#" onClick="newCustomer()">New</a></th> <!--Event handler for 'New' button-->
+    <th></th> 
     <th>Customer ID</th>
     <th>First Name</th>
     <th>Last Name</th>
@@ -69,8 +75,8 @@ used sample website code for BSG database as starting point for all html pages.-
     <th>Address</th>
   </tr>
   <tr>
-    <td><a href="#" onClick="updateCustomer('this.customer_id')">Edit</a></td>
-    <td><a href="#" onclick="deleteCustomer('this.customer_id')">Delete</a></td>
+    <td><a href="#" onClick="updateCustomer('this.customer_id')">Edit</a></td> <!--Event handler for 'Edit' button-->
+    <td><a href="#" onclick="deleteCustomer('this.customer_id')">Delete</a></td> <!--Event handler for 'Edit' button-->
     <td align="right" >1</td>
     <td >John</td>
     <td align="right" >Smith</td>
@@ -78,8 +84,8 @@ used sample website code for BSG database as starting point for all html pages.-
     <td>123 Some Street</td>
   </tr>
   <tr>
-    <td><a href="#" onClick="updateCustomer('this.customer_id')">Edit</a></td>
-    <td><a href="#" onclick="deleteCustomer('this.customer_id')">Delete</a></td>
+    <td><a href="#" onClick="updateCustomer('this.customer_id')">Edit</a></td> <!--Event handler for 'Edit' button-->
+    <td><a href="#" onclick="deleteCustomer('this.customer_id')">Delete</a></td> <!--Event handler for 'Edit' button-->
     <td align="right" >2</td>
     <td>Jane</td>
     <td align="right" >Doe</td>
@@ -87,18 +93,29 @@ used sample website code for BSG database as starting point for all html pages.-
     <td>456 Another Street</td>
   </tr>
   <tr>
-    <td><a href="#" onClick="updateCustomer('this.customer_id')">Edit</a></td>
-    <td><a href="#" onclick="deleteCustomer('this.customer_id')">Delete</a></td>
+    <td><a href="#" onClick="updateCustomer('this.customer_id')">Edit</a></td> <!--Event handler for 'Edit' button--> 
+    <td><a href="#" onclick="deleteCustomer('this.customer_id')">Delete</a></td> <!--Event handler for 'Edit' button-->
     <td align="right" >3</td>
     <td>Sumyun</td>
     <td align="right" >Gai</td>
     <td>sumyun.gai@example.com</td>
     <td>789 That Way</td>
   </tr>
+  <tr>
+    <td><a href="#" onClick="updateCustomer('this.customer_id')">Edit</a></td> <!--Event handler for 'Edit' button--> 
+    <td><a href="#" onclick="deleteCustomer('this.customer_id')">Delete</a></td> <!--Event handler for 'Edit' button-->
+    <td align="right" >4</td>
+    <td>Billy</td>
+    <td align="right" >Joel</td>
+    <td>piano.man@example.com</td>
+    <td>2112 Uptown Road</td>
+  </tr>
 </table>
 <p>&nbsp;</p>
 </div> <!-- browse -->
 <div id="insert">
+    <!--Form to create a new entry in table, can input first and last name, email and address;
+  customer_id cannot be input because it is auto-incremented-->
     <form method="POST" id="addPlanet">
         <legend><strong>Add Customer</strong></legend>
           <fieldset class="fields">
@@ -107,12 +124,14 @@ used sample website code for BSG database as starting point for all html pages.-
             <label> Email </label> <input type="text" name="email">
             <label> Address </label> <input type="text" name="address">
       </fieldset>
+          <!--Event handlers for submit and cancel buttons-->
           <input class="btn" type="submit" id="addCustomer" value="Add Customer">
-          <input class="btn" type="button" value="Cancel" onClick="browsePeople()">
+          <input class="btn" type="button" value="Cancel" onClick="browseCustomers()">
 	</form> 
 </div><!-- insert -->
 <p>&nbsp;</p>
 <div id="update">
+      <!--Form to update info in an entry in table; can update amount name, email and address-->
     <form method="POST" id="UpdateCustomer">
         <legend><strong>Update Customer</strong></legend>
           <fieldset class="fields">
@@ -122,23 +141,25 @@ used sample website code for BSG database as starting point for all html pages.-
             <label> Email </label> <input type="text" name="email">
             <label> Address </label> <input type="text" name="address">
       </fieldset>
+        <!--Event handlers for submit and cancel buttons-->
           <input class="btn" type="submit" id="UpdateSaveCustomer" value="Save Update Customer">
-          <input class="btn" type="button" value="Cancel" onClick="browseCustomer()">
+          <input class="btn" type="button" value="Cancel" onClick="browseCustomers()">
 	</form> 
 </div><!-- update -->
 <p>&nbsp;</p>
 <div id="delete" style="display: block">
+   <!--Form to delete a customer record-->
   <form method="POST" id="deleteCustomer">
       <legend><strong>Delete Customer</strong></legend>
           <fieldset class="fields">
           <p>Are you sure you wish to delete the following customer record?</p>
           <input type="hidden" name="customer_id" id="deletecustomer_id">
-          <label><strong>ID:</strong></label> 
-          <label> <strong>Name</strong> </label> 
-            
+          <label><strong>ID: 4</strong></label> <!--Example data-->
+          <label> <strong>Name: Billy Joel</strong> </label> <!--Example data-->
     </fieldset>
+    <!--Event handlers for submit and cancel buttons-->
     <input class="btn" type="submit" id="DeleteCustomer" value="Delete Customer">
-          <input class="btn" type="button" value="Cancel" onClick="browsePeople()">
+          <input class="btn" type="button" value="Cancel" onClick="browseCustomers()">
   </form> 
 </div><!-- delete -->
 

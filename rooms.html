@@ -6,11 +6,9 @@ used sample website code for BSG database as starting point for all html pages.-
 <title>Rooms</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript">
+    /*Determines which forms are shown; default is browseCustomers*/
 		function showform(dowhat) {
-			/*
-			* four DIVS: browse, insert, update, delete
-			* this function sets one visible the others not
-			*/
+
             document.getElementById('browse').style.display = 'block';
 		}
 
@@ -21,10 +19,12 @@ used sample website code for BSG database as starting point for all html pages.-
 <body onload="browseRooms()">
 <h1>Rooms</h1>
 
+<!--Navigation bar with links to every page-->
 [ <a href="index.html">Home</a> |<a href="customers.html">Customers</a> | <a href="rooms.html">Rooms</a> | <a href="room_types.html">Room Types</a>  |
  <a href="bookings.html">Bookings</a>  | <a href="room_bookings.html">Room Bookings</a> ]
 
 <div id="browse">
+<!--Displays all data currently in table-->
 <table border="1" cellpadding="5">
   <tr>
     <th>Room ID</th>

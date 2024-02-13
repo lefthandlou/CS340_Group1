@@ -6,25 +6,26 @@ used sample website code for BSG database as starting point for all html pages.-
 <title>Room Types</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript">
+    /*Determines which forms are shown; default is browseCustomers*/
 		function showform(dowhat) {
-			/*
-			* four DIVS: browse, insert, update, delete
-			* this function sets one visible the others not
-			*/
-            if (dowhat == 'update'){
+
+      /*If 'Edit' button is clicked, the update form is shown, and all other forms are hidden*/
+      if (dowhat == 'update'){
 				document.getElementById('browse').style.display = 'none';
 				document.getElementById('update').style.display = 'block';
 			}
-            else if (dowhat == 'all'){
+      /*If 'display all forms' is clicked, all forms are shown*/
+      else if (dowhat == 'all'){
 				document.getElementById('browse').style.display = 'block';
 				document.getElementById('update').style.display = 'block';
 			}
+      /*By default, only the data table is displayed*/
 			else { //by default display browse
 				document.getElementById('browse').style.display = 'block';
 				document.getElementById('update').style.display = 'none';
 			}
 		}
-
+    // Defines the specific functions for each CRUD operation; in this case only read and update
     function updateRoomType(rtid) { showform('update'); }
     function browseRoomTypes() { showform ('browse'); }
     function showAll() { showform ('all'); }
@@ -34,11 +35,13 @@ used sample website code for BSG database as starting point for all html pages.-
 <body onload="browseRoomTypes()">
 <h1>Room Types</h1>
 
+<!--Navigation bar with links to every page-->
 [ <a href="index.html">Home</a> |<a href="customers.html">Customers</a> | <a href="rooms.html">Rooms</a> | <a href="room_types.html">Room Types</a>  |
  <a href="bookings.html">Bookings</a>  | <a href="room_bookings.html">Room Bookings</a> ]
  
 <div id="browse">
-<p><a href="#" onClick="showAll()">Display all forms</a> </p>
+<!--Displays all data currently in table-->
+<p><a href="#" onClick="showAll()">Display all forms</a> </p>  <!--Event handler for 'Display all forms' button-->
 <table border="1" cellpadding="5">
   <tr>
     <th></th>
@@ -48,14 +51,14 @@ used sample website code for BSG database as starting point for all html pages.-
     <th>Price</th>
   </tr>
   <tr>
-    <td><a href="#" onClick="updateRoomType('this.room_type_id')">Edit</a></td>
+    <td><a href="#" onClick="updateRoomType('this.room_type_id')">Edit</a></td>  <!--Event handler for 'Edit' button-->
     <td align="right" >1</td>
     <td align="right" >Standard</td>
     <td align="right" >A standard room with basic stuff.</td>
     <td align="right" >55</td>
   </tr>
   <tr>
-    <td><a href="#" onClick="updateRoomType('this.room_type_id')">Edit</a></td>
+    <td><a href="#" onClick="updateRoomType('this.room_type_id')">Edit</a></td>  <!--Event handler for 'Edit' button-->
     <td align="right" >2</td>
     <td align="right" >Deluxe</td>
     <td align="right" >A deluxe room with more stuff.</td>
@@ -66,6 +69,7 @@ used sample website code for BSG database as starting point for all html pages.-
 </div> <!-- browse -->
 <p>&nbsp;</p>
 <div id="update">
+    <!--Form to update info in an entry in table; can update description and price-->
     <form method="POST" id="UpdateRoomType">
         <legend><strong>Update Room Type</strong></legend>
           <fieldset class="fields">
@@ -77,6 +81,7 @@ used sample website code for BSG database as starting point for all html pages.-
             <label> Description</label> <input type="text" name="description">
             <label> Price</label> <input type="text" name="price">
           </fieldset>
+          <!--Event handlers for submit and cancel buttons-->
           <input class="btn" type="submit" id="UpdateRoomType" value="Save Update Room Type">
           <input class="btn" type="button" value="Cancel" onClick="browseRoomTypes()">
 	</form> 
