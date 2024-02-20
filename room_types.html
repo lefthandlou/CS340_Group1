@@ -33,16 +33,25 @@ used sample website code for BSG database as starting point for all html pages.-
 </head>
 
 <body onload="browseRoomTypes()">
-<h1>Room Types</h1>
+
 
 <!--Navigation bar with links to every page-->
-[ <a href="index.html">Home</a> |<a href="customers.html">Customers</a> | <a href="rooms.html">Rooms</a> | <a href="room_types.html">Room Types</a>  |
- <a href="bookings.html">Bookings</a>  | <a href="room_bookings.html">Room Bookings</a> ]
+<nav>
+  <a href="index.html">Home</a> 
+  <a href="customers.html">Customers</a> 
+  <a href="rooms.html">Rooms</a> 
+  <a href="room_types.html">Room Types</a> 
+  <a href="bookings.html">Bookings</a> 
+  <a href="room_bookings.html">Room Bookings</a> 
+</nav>
  
+<h1>Room Types</h1>
+
 <div id="browse">
 <!--Displays all data currently in table-->
-<p><a href="#" onClick="showAll()">Display all forms</a> </p>  <!--Event handler for 'Display all forms' button-->
-<table border="1" cellpadding="5">
+<p>
+  <p><input type="button" href="#"onClick="showAll()" value = "Show all Forms"><!--Event handler for 'Display all forms' button-->
+<table cellpadding="5">
   <tr>
     <th></th>
     <th>Room Type ID</th>
@@ -51,14 +60,14 @@ used sample website code for BSG database as starting point for all html pages.-
     <th>Price</th>
   </tr>
   <tr>
-    <td><a href="#" onClick="updateRoomType('this.room_type_id')">Edit</a></td>  <!--Event handler for 'Edit' button-->
+    <th> <input type="button" href="#" onClick="updateRoomType('this.room_type_id')" value = "Edit"></th> 
     <td align="right" >1</td>
     <td align="right" >Standard</td>
     <td align="right" >A standard room with basic stuff.</td>
     <td align="right" >55</td>
   </tr>
   <tr>
-    <td><a href="#" onClick="updateRoomType('this.room_type_id')">Edit</a></td>  <!--Event handler for 'Edit' button-->
+    <th> <input type="button" href="#" onClick="updateRoomType('this.room_type_id')" value = "Edit"></th> 
     <td align="right" >2</td>
     <td align="right" >Deluxe</td>
     <td align="right" >A deluxe room with more stuff.</td>

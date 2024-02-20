@@ -17,15 +17,23 @@ used sample website code for BSG database as starting point for all html pages.-
 </head>
 
 <body onload="browseRooms()">
-<h1>Rooms</h1>
+
 
 <!--Navigation bar with links to every page-->
-[ <a href="index.html">Home</a> |<a href="customers.html">Customers</a> | <a href="rooms.html">Rooms</a> | <a href="room_types.html">Room Types</a>  |
- <a href="bookings.html">Bookings</a>  | <a href="room_bookings.html">Room Bookings</a> ]
+<nav>
+  <a href="index.html">Home</a> 
+  <a href="customers.html">Customers</a> 
+  <a href="rooms.html">Rooms</a> 
+  <a href="room_types.html">Room Types</a> 
+  <a href="bookings.html">Bookings</a> 
+  <a href="room_bookings.html">Room Bookings</a> 
+</nav>
+
+<h1>Rooms</h1>
 
 <div id="browse">
 <!--Displays all data currently in table-->
-<table border="1" cellpadding="5">
+<table cellpadding="5">
   <tr>
     <th>Room ID</th>
     <th>Room Type ID</th>

@@ -4,7 +4,7 @@ used sample website code for BSG database as starting point for all html pages.-
 <html>
 <head>
 <title>Customers</title>
-<link href="style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="style.css" type="text/css" />
 <script language="JavaScript">
   /*Determines which forms are shown; default is browseCustomers*/
   function showform(dowhat) {
@@ -55,18 +55,27 @@ used sample website code for BSG database as starting point for all html pages.-
 </head>
 
 <body onload="browseCustomers()">
-<h1>Customers</h1>
+
 
 <!--Navigation bar with links to every page-->
-[ <a href="index.html">Home</a> |<a href="customers.html">Customers</a> | <a href="rooms.html">Rooms</a> | <a href="room_types.html">Room Types</a>  |
- <a href="bookings.html">Bookings</a>  | <a href="room_bookings.html">Room Bookings</a> ]
+<nav>
+  <a href="index.html">Home</a> 
+  <a href="customers.html">Customers</a> 
+  <a href="rooms.html">Rooms</a> 
+  <a href="room_types.html">Room Types</a> 
+  <a href="bookings.html">Bookings</a> 
+  <a href="room_bookings.html">Room Bookings</a> 
+</nav>
+
+<h1>Customers</h1>
 
 <div id="browse">
   <!--Displays all data currently in table-->
-<p><a href="#" onClick="showAll()">Display all forms</a> </p> <!--Event handler for 'Display all forms' button-->
-<table border="1" cellpadding="5">
+<p><input type="button" href="#"onClick="showAll()" value = "Show all Forms"><!--Event handler for 'Display all forms' button-->
+
+<table cellpadding="5">
   <tr>
-    <th><a href="#" onClick="newCustomer()">New</a></th> <!--Event handler for 'New' button-->
+    <th> <input type="button" href="#" onClick="newCustomer()" value = "New"></th> <!--Event handler for 'New' button -->
     <th></th> 
     <th>Customer ID</th>
     <th>First Name</th>
@@ -75,8 +84,8 @@ used sample website code for BSG database as starting point for all html pages.-
     <th>Address</th>
   </tr>
   <tr>
-    <td><a href="#" onClick="updateCustomer('this.customer_id')">Edit</a></td> <!--Event handler for 'Edit' button-->
-    <td><a href="#" onclick="deleteCustomer('this.customer_id')">Delete</a></td> <!--Event handler for 'Edit' button-->
+    <th> <input type="button" href="#" onClick="updateCustomer('this.customer_id')" value = "Edit"></th> 
+    <th> <input type="button" href="#" onClick="deleteCustomer('this.customer_id')" value = "Delete"></th> 
     <td align="right" >1</td>
     <td >John</td>
     <td align="right" >Smith</td>
@@ -84,8 +93,8 @@ used sample website code for BSG database as starting point for all html pages.-
     <td>123 Some Street</td>
   </tr>
   <tr>
-    <td><a href="#" onClick="updateCustomer('this.customer_id')">Edit</a></td> <!--Event handler for 'Edit' button-->
-    <td><a href="#" onclick="deleteCustomer('this.customer_id')">Delete</a></td> <!--Event handler for 'Edit' button-->
+    <th> <input type="button" href="#" onClick="updateCustomer('this.customer_id')" value = "Edit"></th> 
+    <th> <input type="button" href="#" onClick="deleteCustomer('this.customer_id')" value = "Delete"></th> 
     <td align="right" >2</td>
     <td>Jane</td>
     <td align="right" >Doe</td>
@@ -93,8 +102,8 @@ used sample website code for BSG database as starting point for all html pages.-
     <td>456 Another Street</td>
   </tr>
   <tr>
-    <td><a href="#" onClick="updateCustomer('this.customer_id')">Edit</a></td> <!--Event handler for 'Edit' button--> 
-    <td><a href="#" onclick="deleteCustomer('this.customer_id')">Delete</a></td> <!--Event handler for 'Edit' button-->
+    <th> <input type="button" href="#" onClick="updateCustomer('this.customer_id')" value = "Edit"></th> 
+    <th> <input type="button" href="#" onClick="deleteCustomer('this.customer_id')" value = "Delete"></th> 
     <td align="right" >3</td>
     <td>Sumyun</td>
     <td align="right" >Gai</td>
@@ -102,8 +111,8 @@ used sample website code for BSG database as starting point for all html pages.-
     <td>789 That Way</td>
   </tr>
   <tr>
-    <td><a href="#" onClick="updateCustomer('this.customer_id')">Edit</a></td> <!--Event handler for 'Edit' button--> 
-    <td><a href="#" onclick="deleteCustomer('this.customer_id')">Delete</a></td> <!--Event handler for 'Edit' button-->
+    <th> <input type="button" href="#" onClick="updateCustomer('this.customer_id')" value = "Edit"></th> 
+    <th> <input type="button" href="#" onClick="deleteCustomer('this.customer_id')" value = "Delete"></th> 
     <td align="right" >4</td>
     <td>Billy</td>
     <td align="right" >Joel</td>

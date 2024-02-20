@@ -1,25 +1,25 @@
 SET FOREIGN_KEY_CHECKS=0;
 SET AUTOCOMMIT = 0;
 
--- TABLE CREATION 
-DROP TABLE IF EXISTS customers;
+---- TABLE CREATION ----
+DROP TABLE IF EXISTS;
 CREATE TABLE customers (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(150) NOT NULL,
-    last_name VARCHAR(150) NOT NULL,
-    email VARCHAR(150) NOT NULL UNIQUE,
-    address VARCHAR(255)
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    address VARCHAR(255),
 );
 
-DROP TABLE IF EXISTS room_types;
+DROP TABLE IF EXISTS;
 CREATE TABLE room_types (
     room_type_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(150),
+    name VARCHAR(255),
     description TEXT,
 	price FLOAT
 );
 
-DROP TABLE IF EXISTS rooms;
+DROP TABLE IF EXISTS;
 CREATE TABLE rooms (
     room_id INT AUTO_INCREMENT PRIMARY KEY,
     room_type_id INT NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE rooms (
 	FOREIGN KEY (room_type_id) REFERENCES room_types(room_type_id)
 );
 
-DROP TABLE IF EXISTS bookings;
+DROP TABLE IF EXISTS;
 CREATE TABLE bookings (
     booking_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT,
@@ -37,12 +37,12 @@ CREATE TABLE bookings (
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 );
 
-DROP TABLE IF EXISTS room_bookings;
+DROP TABLE IF EXISTS;
 CREATE TABLE room_bookings (
     room_booking_id INT AUTO_INCREMENT PRIMARY KEY,
     room_type_id INT NOT NULL,
 	booking_id INT,
-    room_id INT NULL,-- NULL because this will be updated to a specific room ID on arrival
+    room_id INT NULL,-- <-- NULL because this will be updated to a specific room ID on arrival
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     nights INT NOT NULL,
@@ -52,13 +52,12 @@ CREATE TABLE room_bookings (
 	FOREIGN KEY (booking_id) REFERENCES bookings(booking_id) ON DELETE CASCADE
 );--booking_id gets DELETE CASCADE because when a booking is deleted we want each of the room_bookings associated with it also deleted
 
--- INSERT DATA 
+-------- INSERT HOTEL DATA ---------
 INSERT INTO customers (first_name, last_name, email, address) 
 VALUES
 	('John', 'Smith', 'john.smith@example.com', '123 Some Street'),
 	('Jane', 'Doe', 'jane.doe@example.com', '456 Another Street'),
-	('Sumyun', 'Gai', 'sumyun.gai@example.com', '789 That Way'), 
-	('Billy', 'Joel', 'piano.man@example.com', '2112 Uptown Road');
+	('Sumyun', 'Gai', 'sumyun.gai@example.com', '789 That Way');
 
 INSERT INTO room_types (name, description, price) 
 VALUES
@@ -80,7 +79,7 @@ VALUES
 	(2, 206), (2, 207), (2, 208), (2, 209), (2, 210), 
 	(2, 211), (2, 212);
 
--- BOOKING NUMBER 1 
+---- BOOKING NUMBER 1 ----
 -- John Smith (customer id = 1) creates a new booking...
 INSERT INTO bookings (customer_id, date_created) 
 VALUES
@@ -89,30 +88,30 @@ VALUES
 INSERT INTO room_bookings (room_type_id, booking_id, start_date, end_date, nights, booked_price) 
 VALUES
 	(
-		1, 1, '2024-02-07', '2024-02-09', 2, (
+		1, 1, '2024-02-07', '2024-02-09', 2, (-- <- room type = 1 because John is a cheap schmuck and got a standard room
 			SELECT price FROM room_types 
-			WHERE room_type_id = 1 
+			WHERE room_type_id = 1 -- <- get the booked price from room_type = 1
 		)
 	);
 
--- BOOKING NUMBER 2
+---- BOOKING NUMBER 2 ----
 -- Now Jane Doe creates a new booking...
-INSERT INTO bookings (customer_id, date_created) 
+INSERT INTO bookings (customer_id, date_created, status) 
 VALUES
 	(2, '2024-02-07'); -- <- Jane Doe (customer id = 2)
 -- Wait for returned bookings.booking_id, then complete all room_bookings...
 INSERT INTO room_bookings (room_type_id, booking_id, start_date, end_date, nights, booked_price) 
 VALUES
 	(
-		2, 2, '2024-02-07', '2024-02-09', 2, (
-			SELECT price FROM room_types
+		2, 2, '2024-02-07', '2024-02-09', 2, (-- <- room type = 2 for Deluxe and 2 for the booking id
+			SELECT price FROM room_types -- <- get the booked price from room_type = 2
 			WHERE room_type_id = 2
 		)
 	);
 
--- BOOKING NUMBER 3
+---- BOOKING NUMBER 3 ----
 -- Now Sumyung Guy creates a new booking...
-INSERT INTO bookings (customer_id, date_created) 
+INSERT INTO bookings (customer_id, date_created, status) 
 VALUES
 	(3, '2024-02-07'); -- <- Jane Doe (customer id = 2)
 -- Wait for returned bookings.booking_id, then complete all room_bookings...
@@ -124,40 +123,6 @@ VALUES
 			WHERE room_type_id = 1
 		)
 	);
-
--- BOOKING NUMBER 4
-INSERT INTO bookings (customer_id, date_created, total_paid, status) 
-VALUES
-	(3, '2024-01-13', 130, 'checked out'); -- <- Jane Doe (customer id = 2)
--- Wait for returned bookings.booking_id, then complete all room_bookings...
-INSERT INTO room_bookings (room_type_id, booking_id, room_id, start_date, end_date, nights, booked_price) 
-VALUES
-	(
-		2, 4, 14, '2024-01-13', '2024-01-15', 2, (
-			SELECT price FROM room_types 
-			WHERE room_type_id = 2
-		)
-	);
-
--- GET ALL BOOKINGS
--- SELECT bookings.*, customers.*, room_bookings.*
--- FROM bookings
--- JOIN customers ON bookings.customer_id = customers.customer_id
--- LEFT JOIN room_bookings ON bookings.booking_id = room_bookings.booking_id;
-
--- GET A SINGLE BOOKING 
--- SELECT bookings.*, room_bookings.*
--- FROM bookings
--- JOIN customers ON bookings.customer_id = customers.customer_id
--- LEFT JOIN room_bookings ON bookings.booking_id = room_bookings.booking_id
--- WHERE customers.email = "john.smith@example.com";
-
--- BOOKING NUMBER 1 FOR JOHN DOE CHECKED IN
--- UPDATE bookings
--- JOIN customers ON bookings.customer_id = customers.customer_id
--- SET bookings.status = 'checked in unpaid'
--- WHERE customers.email = 'john.smith@example.com';
-
 
 SET FOREIGN_KEY_CHECKS=1;
 COMMIT;

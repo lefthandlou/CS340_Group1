@@ -4,7 +4,7 @@ used sample website code for BSG database as starting point for all html pages.-
 <html>
 <head>
 <title>Bookings</title>
-<link href="style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="style.css" type="text/css" />
 <script language="JavaScript">
   /*Determines which forms are shown; default is browseBookings*/
 		function showform(dowhat) {
@@ -55,20 +55,26 @@ used sample website code for BSG database as starting point for all html pages.-
 </head>
 
 <body onload="browseBookings()">
-<h1>Bookings</h1>
 
 <!--Navigation bar with links to every page-->
-[ <a href="index.html">Home</a> |<a href="customers.html">Customers</a> | <a href="rooms.html">Rooms</a> | <a href="room_types.html">Room Types</a>  |
- <a href="bookings.html">Bookings</a>  | <a href="room_bookings.html">Room Bookings</a> ]
- 
+<nav>
+  <a href="index.html">Home</a> 
+  <a href="customers.html">Customers</a> 
+  <a href="rooms.html">Rooms</a> 
+  <a href="room_types.html">Room Types</a> 
+  <a href="bookings.html">Bookings</a> 
+  <a href="room_bookings.html">Room Bookings</a> 
+</nav>
+
+<h1>Bookings</h1>
 
 <div id="browse">
 <!--Displays all data currently in table-->
-<p><a href="#" onClick="showAll()">Display all forms</a> </p> <!--Event handler for 'Display all forms' button-->
-<table border="1" cellpadding="5">
+<p><input type="button" href="#"onClick="showAll()" value = "Show all Forms"><!--Event handler for 'Display all forms' button-->
+<table cellpadding="5">
   <tr>
     
-    <th><a href="#" onClick="newBooking()">New</a></th> <!--Event handler for 'New' button-->
+    <th> <input type="button" href="#" onClick="newBooking()" value = "New"></th> <!--Event handler for 'New' button -->
     <th></th>
     <th>Booking ID</th>
     <th>Customer ID</th>
@@ -77,17 +83,17 @@ used sample website code for BSG database as starting point for all html pages.-
     <th>Status</th>
   </tr>
   <tr>
-    <td><a href="#" onClick="updateBooking('this.booking_id')">Edit</a></td> <!--Event handler for 'Edit' button-->
-    <td><a href="#" onclick="deleteBooking('this.booking_id')">Delete</a></td> <!--Event handler for 'Delete' button-->
-    <td align="right" >1</td>
+    <th> <input type="button" href="#" onClick="updateBooking('this.booking_id')" value = "Edit"></th> <!--Event handler for 'Edit' button -->
+    <th> <input type="button" href="#" onclick="deleteBooking('this.booking_id')" value = "Delete"></th> <!--Event handler for 'Delete' button -->
+    <td align="right">1</td>
     <td align="right" >1</td>
     <td align="right" >0</td>
     <td>2024-02-07</td>
     <td>arriving</td>
   </tr>
   <tr>
-    <td><a href="#" onClick="updateBooking('this.booking_id')">Edit</a></td>
-    <td><a href="#" onclick="deleteBooking('this.booking_id')">Delete</a></td>
+    <th> <input type="button" href="#" onClick="updateBooking('this.booking_id')" value = "Edit"></th> <!--Event handler for 'Edit' button -->
+    <th> <input type="button" href="#" onclick="deleteBooking('this.booking_id')" value = "Delete"></th> <!--Event handler for 'Delete' button -->
     <td align="right" >2</td>
     <td align="right" >2</td>
     <td align="right" >0</td>
@@ -95,8 +101,8 @@ used sample website code for BSG database as starting point for all html pages.-
     <td>arriving</td>
   </tr>
   <tr>
-    <td><a href="#" onClick="updateBooking('this.booking_id')">Edit</a></td>
-    <td><a href="#" onclick="deleteBooking('this.booking_id')">Delete</a></td>
+    <th> <input type="button" href="#" onClick="updateBooking('this.booking_id')" value = "Edit"></th> <!--Event handler for 'Edit' button -->
+    <th> <input type="button" href="#" onclick="deleteBooking('this.booking_id')" value = "Delete"></th> <!--Event handler for 'Delete' button -->
     <td align="right" >3</td>
     <td align="right" >3</td>
     <td align="right" >0</td>
@@ -104,8 +110,8 @@ used sample website code for BSG database as starting point for all html pages.-
     <td>arriving</td>
   </tr>
   <tr>
-    <td><a href="#" onClick="updateBooking('this.booking_id')">Edit</a></td>
-    <td><a href="#" onclick="deleteBooking('this.booking_id')">Delete</a></td>
+    <th> <input type="button" href="#" onClick="updateBooking('this.booking_id')" value = "Edit"></th> <!--Event handler for 'Edit' button -->
+    <th> <input type="button" href="#" onclick="deleteBooking('this.booking_id')" value = "Delete"></th> <!--Event handler for 'Delete' button -->
     <td align="right" >4</td>
     <td align="right" >3</td>
     <td align="right" >130</td>
