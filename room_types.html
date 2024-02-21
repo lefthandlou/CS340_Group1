@@ -7,26 +7,47 @@ used sample website code for BSG database as starting point for all html pages.-
 <link href="style.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript">
     /*Determines which forms are shown; default is browseCustomers*/
-		function showform(dowhat) {
-
-      /*If 'Edit' button is clicked, the update form is shown, and all other forms are hidden*/
-      if (dowhat == 'update'){
+      function showform(dowhat) {
+      
+      /*If 'New' button is clicked, the insert form is shown, and all other forms are hidden*/
+			if (dowhat == 'insert'){
 				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+
+			}
+       /*If 'Edit' button is clicked, the update form is shown, and all other forms are hidden*/
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
 				document.getElementById('update').style.display = 'block';
+
+			}
+       /*If 'Delete' button is clicked, the delete form is shown, and all other forms are hidden*/
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+
 			}
       /*If 'display all forms' is clicked, all forms are shown*/
-      else if (dowhat == 'all'){
+            else if (dowhat == 'all'){
 				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
 				document.getElementById('update').style.display = 'block';
+
 			}
       /*By default, only the data table is displayed*/
-			else { //by default display browse
+			else {
 				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
 				document.getElementById('update').style.display = 'none';
+
 			}
 		}
-    // Defines the specific functions for each CRUD operation; in this case only read and update
-    function updateRoomType(rtid) { showform('update'); }
+    // Defines the specific functions for each CRUD operation
+    function newRoomType() { showform('insert'); }
+    function updateRoomType(bid) { showform('update'); }
     function browseRoomTypes() { showform ('browse'); }
     function showAll() { showform ('all'); }
 </script>
@@ -50,10 +71,10 @@ used sample website code for BSG database as starting point for all html pages.-
 <div id="browse">
 <!--Displays all data currently in table-->
 <p>
-  <p><input type="button" href="#"onClick="showAll()" value = "Show all Forms"><!--Event handler for 'Display all forms' button-->
+<input type="button" href="#"onClick="showAll()" value = "Show all Forms"><!--Event handler for 'Display all forms' button-->
 <table cellpadding="5">
   <tr>
-    <th></th>
+   <th><input type="button" href="#" onClick="newRoomType()" value = "New"></th>
     <th>Room Type ID</th>
     <th>Name</th>
     <th>Description</th>
@@ -76,6 +97,23 @@ used sample website code for BSG database as starting point for all html pages.-
 </table>
 <p>&nbsp;</p>
 </div> <!-- browse -->
+<div id="insert">
+  <!--Form to create a new entry in table, can input Customer_ID 
+    from drop down (populated from customers table), total paid, date created, and status.
+  booking_id cannot be input because it is auto-incremented-->
+    <form method="POST" id="newRoomType">
+        <legend><strong>Add Room Type</strong></legend>
+          <fieldset class="fields">
+            <!--Drop-down menu of room types-->
+            <label> Room Type Name</label> <input tipe="text" name ="name">
+            <label> Description</label> <input type="text" name="description">
+            <label> Price</label> <input type="text" name="price">
+        </fieldset>
+        <!--Event handlers for submit and cancel buttons-->
+          <input class="btn" type="submit" id="newRoomType" value="Add Room"> 
+          <input class="btn" type="button" value="Cancel" onClick="browseRoomTypes()"> 
+	</form> 
+</div><!-- insert -->
 <p>&nbsp;</p>
 <div id="update">
     <!--Form to update info in an entry in table; can update description and price-->

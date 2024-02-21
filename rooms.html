@@ -9,9 +9,17 @@ used sample website code for BSG database as starting point for all html pages.-
     /*Determines which forms are shown; default is browseCustomers*/
 		function showform(dowhat) {
 
-            document.getElementById('browse').style.display = 'block';
+      if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+			} 
+      else{
+        document.getElementById('browse').style.display = 'block';
+        document.getElementById('insert').style.display = 'none';
+      }
+      
 		}
-
+    function newRoom() { showform('insert'); }
     function browseRooms() { showform ('browse'); }
 </script>
 </head>
@@ -30,7 +38,7 @@ used sample website code for BSG database as starting point for all html pages.-
 </nav>
 
 <h1>Rooms</h1>
-
+<input type="button" href="#" onClick="newRoom()" value = "New"></th> <!--Event handler for 'New' button -->
 <div id="browse">
 <!--Displays all data currently in table-->
 <table cellpadding="5">
@@ -167,6 +175,24 @@ used sample website code for BSG database as starting point for all html pages.-
 </table>
 <p>&nbsp;</p>
 </div> <!-- browse -->
-
+<div id="insert">
+  <!--Form to create a new entry in table, can input Customer_ID 
+    from drop down (populated from customers table), total paid, date created, and status.
+  booking_id cannot be input because it is auto-incremented-->
+    <form method="POST" id="addRoom">
+        <legend><strong>Add Room</strong></legend>
+          <fieldset class="fields">
+            <!--Drop-down menu of room types-->
+            <label> Room Type </label><select name="room_type_id"> 
+              <option value="1">1</option>
+              <option value="2">2</option>
+              </select>
+            <label> Room Number</label> <input type="text" name="total_paid">
+        </fieldset>
+        <!--Event handlers for submit and cancel buttons-->
+          <input class="btn" type="submit" id="addRoom" value="Add Room"> 
+          <input class="btn" type="button" value="Cancel" onClick="browseRooms()"> 
+	</form> 
+</div><!-- insert -->
 </body>
 </html>
